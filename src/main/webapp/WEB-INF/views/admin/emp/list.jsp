@@ -22,10 +22,14 @@
 					<a href="<%=request.getContextPath()%>/admin/emp/createform"
 					class="btn btn-success"><i class="glyphicon glyphicon-edit"></i>
 					Create Employee</a>
+					<a href="<%=request.getContextPath()%>/admin/emp/createformWithRole"
+					class="btn btn-success"><i class="glyphicon glyphicon-edit"></i>
+					Create Employee With Role</a>	
 					<a href="<%=request.getContextPath()%>/user/menu"
 					class="btn btn-primary"><i class="glyphicon glyphicon-edit"></i>
 					Menu</a>
-				<br/> 
+				<br /> 
+				<br>
 				<table class="table table-bordered table-striped">
 					<thead>
 						<tr>
@@ -36,12 +40,15 @@
 							<th>Lastname</th>
 							<th>Salary</th>
 							<th>Dept</th>
+							<th>Role</th>
+							
 							<th>Edit</th>
 							<th>Delete</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach var="emp" items="${employees}">
+						
 							<tr>
 								<td>${emp.employeeId}</td>
 								<td>${emp.login}</td>
@@ -49,6 +56,7 @@
 								<td>${emp.firstname}</td>
 								<td>${emp.lastname}</td>
 								<td>${emp.salary}</td>
+								
 								<td>								
 									<c:forEach var="entry" items="${departmentList}">        
 									      <c:if test="${entry.key == emp.department.departmentId}">
@@ -56,6 +64,9 @@
 									      </c:if>
 									</c:forEach>
 								</td>
+								
+    							<td>${emp.role.description}</td>
+
 								<td><a
 									href="<%=request.getContextPath()%>/admin/emp/editform/${emp.employeeId}"
 									class="btn btn-info btn-xs"> <i
@@ -68,6 +79,7 @@
 								</a></td>
 							</tr>
 						</c:forEach>
+						
 					</tbody>
 				</table>
 

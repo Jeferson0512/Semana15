@@ -41,7 +41,7 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			//return null;
 
 		} catch (EmptyResultDataAccessException e) {
-			throw new EmptyResultException();
+			throw new EmptyResultException(e.getMessage());
 		} catch (Exception e) {
 			logger.info("Error: " + e.getMessage());
 			throw new DAOException(e.getMessage());
@@ -197,5 +197,24 @@ public class EmployeeDAOImpl implements EmployeeDAO {
 			throw new DAOException(e.getMessage());
 		}
 	}
+	@Override
+	public void addRole(String login, String roleId) throws DAOException {
+
+		String query = "INSERT INTO employees_roles (login, role)  VALUES ( ?,? )";
+
+		Object[] params = new Object[] { login, roleId };
+
+
+		try {
+			// create
+			jdbcTemplate.update(query, params);
+
+		} catch (Exception e) {
+			logger.error("Error: " + e.getMessage());
+			throw new DAOException(e.getMessage());
+		}
+
+	}
+
 
 }

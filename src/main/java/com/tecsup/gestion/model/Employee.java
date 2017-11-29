@@ -31,7 +31,18 @@ public class Employee extends Credential {
 		this.lastname = lastname;
 		this.salary = salary;
 	}
+	Role role = new Role();
+	
+	
+	public Role getRole() {
+		return role;
+	}
 
+	public void setRole(Role role) {
+		this.role = role;
+	}
+
+	
 	public Employee() {
 		super();
 	}
